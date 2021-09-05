@@ -12,7 +12,7 @@ script:
 after_success:
   - docker build -t cloudpg07/multi-client ./client
   - docker build -t cloudpg07/multi-server ./server
-  - docker build -t cloudpg07/multi-nginx ./iginx
+  - docker build -t cloudpg07/multi-nginx ./nginx
   - docker build -t cloudpg07/multi-worker ./worker
   # Login to docker
   - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
