@@ -6,9 +6,6 @@ services:
 before_install:
   - docker build  -t cloudpg07/complex-app -f ./client/Dockerfile.dev ./client
 
-# before_install: 
-#   - docker build -t cloudpg07/complex-app npm test -f ./client/Dockerfile.dev ./client
-
 script:
   - docker run -e CI=true cloudpg07/complex-app npm test -- --coverage
 
@@ -18,7 +15,7 @@ after_success:
   - docker build -t cloudpg07/multi-nginx ./iginx
   - docker build -t cloudpg07/multi-worker ./worker
   # Login to docker
-  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_Id" --password-stdin
+  - echo "$DOCKER_PASSWORD" | docker login -u "$DOCKER_ID" --password-stdin
   # Take all above images and push them to docker hub
   - docker push cloudpg07/multi-client
   - docker push cloudpg07/multi-server
