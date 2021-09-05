@@ -10,7 +10,7 @@ before_install:
 #   - docker build -t cloudpg07/complex-app npm test -f ./client/Dockerfile.dev ./client
 
 script:
-  - docker run -e CI=true cloudpg07/react-test npm test -- --coverage
+  - docker run -e CI=true cloudpg07/complex-app npm test -- --coverage
 
 after_success:
   - docker build -t cloudpg07/multi-client ./client
